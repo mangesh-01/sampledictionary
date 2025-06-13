@@ -10,7 +10,7 @@ print("Welcome to library management system")
 print("1. Add Entry \n2. Add Book \n3. Available Books List")
 option = input("Please select your option : ")
 if option == '1' :
-    bookName = input(print("Enter : "))
+    bookName = input(print("Enter book's name: "))
     if bookName in books_list: 
             if books_list[bookName] > 0:
              books_list[bookName] -= 1
