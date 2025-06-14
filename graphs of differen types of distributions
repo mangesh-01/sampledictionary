@@ -1,0 +1,23 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
+arr = np.random.normal(size = 10000)
+
+sns.displot(arr, kind = 'kde')
+plt.title('Normal')
+
+arr2 = np.random.binomial(n= 100,p = 0.5, size = 10000)
+
+sns.displot(arr2, kind = 'kde')
+plt.title('Binomial')
+
+
+arr3 = np.random.exponential(size = 10000)
+
+sns.displot(arr3, kind = 'kde')
+plt.title('Exponential')
+
+arr4 = np.random.uniform(size=10000)
+
+sns.displot(arr4, kind = 'kde')
+plt.title('Uniform')
