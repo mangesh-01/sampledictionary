@@ -1,0 +1,28 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+data1 = sns.load_dataset('iris')
+
+
+sns.lineplot(x='sepal_length', y='petal_length', data=data1)
+plt.title('Lengths of Sepal and Petal')
+plt.show()
+print('From the above graph petal length generally increases with increase in sepal length')
+
+
+sns.lineplot(x = 'sepal_width', y = 'petal_width', data = data1)
+plt.title('Width of Sepal and Petal')
+plt.show()
+print('From the above graph petal width decreases in general with sepal width.')
+
+sns.lineplot(x = 'sepal_length', y = 'petal_length', data=data1, hue = 'species')
+plt.title('Length of Sepal and Petal species wise')
+plt.show()
+print('From the above graph petal length of setosa remains constant with sepal length however other two species follow the former trend.')
+
+
+
+sns.lineplot(x = 'sepal_width', y = 'petal_width', data = data1, hue = 'species')
+plt.title('Width of Sepals and Petals species wise')
+plt.show()
+print('From the above graph petal width of setosa remains constant with sepal width however for other two species it increases in general.')
