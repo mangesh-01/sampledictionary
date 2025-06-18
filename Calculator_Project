@@ -1,0 +1,42 @@
+class Calculator:
+    def __init__(self, num1, num2, operator):
+        self.num1 = num1
+        self.num2 = num2
+        self.operator = operator
+
+
+        if self.operator == '+':
+            Addition(self.num1 , self.num2)                 
+
+        if self.operator == '-':
+            Minus (self.num1, self.num2)
+        
+        if self.operator == '*':
+            Product(self.num1, self.num2)
+        if self.operator == '/':
+            Division(self.num1,self.num2)
+
+class Addition:
+    def __init__(self, a, b):
+        print(a + b)        
+
+class Minus:
+    def __init__(self,a,b):
+        print(a - b)
+
+class Product:
+    def __init__(self, a,b):
+        print(a * b)
+class Division:
+    def __init__ (self, a, b):
+        if b!= 0:
+            print(a/b)
+        else:
+            print("Division not possible.")
+
+
+Calculator(1,2,'+')
+Calculator(1,0,'/')
+Calculator(1,2, '-')
+Calculator(1,2,'/')
+Calculator(6,2,'*')
