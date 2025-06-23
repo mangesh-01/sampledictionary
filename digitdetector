@@ -1,0 +1,78 @@
+import kagglehub
+
+# Download latest version
+path = kagglehub.dataset_download("oddrationale/mnist-in-csv")
+
+print("Path to dataset files:", path)
+
+
+
+import os
+import numpy as np
+from PIL import Image
+from IPython.display import display
+
+# 1. Identify the CSV file in the downloaded dataset folder
+csv_files = [f for f in os.listdir(path) if f.endswith('.csv')]
+if not csv_files:
+    raise FileNotFoundError(f"No CSV files found in {path}")
+csv_path = os.path.join(path, csv_files[0])
+
+# 2. Load the CSV (skip header row)
+data = np.genfromtxt(csv_path, delimiter=',', skip_header=1)
+labels = data[:, 0].astype(int)
+pixels = data[:, 1:].astype(np.uint8)
+
+# 3. Ask user for an index and validate
+max_idx = len(labels) - 1
+idx = int(input(f"Enter image index (0 to {max_idx}): "))
+if not (0 <= idx <= max_idx):
+    raise ValueError(f"Index out of range. Must be between 0 and {max_idx}.")
+
+# 4. Reshape pixel data and display
+img_arr = pixels[idx].reshape(28, 28)
+img = Image.fromarray(img_arr, mode='L')
+display(img)
+
+
+print("Label:", labels[idx])
+
+
+
+# layer1 = np.array(np.empty((1,784)),dtype=np.float32)
+layer1 = scaledpixel
+layer2 = np.array(np.empty((1,107),dtype=np.float32))
+layer3 = np.array(np.empty((1,26)),dtype=np.float32)
+layer4 =  np.array(np.empty((1,10)),dtype=np.float32)
+
+
+w_l1_l2 = np.array(np.random.rand(784,107) ,dtype=np.float32)
+w_l2_l3 = np.array(np.random.rand(107,26), dtype=np.float32) 
+w_l3_l4 = np.array(np.random.rand(26,10),dtype=np.float32)
+
+b_l2 = np.array(np.random.rand(1,107) ,dtype=np.float32)
+b_l3 =np.array(np.random.rand(1,26) ,dtype=np.float32)
+b_l4 = np.array(np.random.rand(1,10) ,dtype=np.float32)
+
+# print(b_l2)
+
+scaledpixel = pixels / 255.0
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+array1 = np.dot(layer1,w_l1_l2) + b_l2
+
+array2 = np.dot(layer2,w_l2_l3) + b_l3
+
+array3 = np.dot(layer3,w_l3_l4) + b_l4
+
+sigmoid1 = sigmoid(array1)
+sigmoid2= sigmoid(array2)
+sigmoid3 = sigmoid(array3)
+
+ans =np.argmax(sigmoid3)
+print("answer is", ans)
+
+
+
